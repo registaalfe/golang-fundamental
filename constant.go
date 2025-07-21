@@ -3,18 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	const pi string = "Hello, World!"
-	const e = 2.718
+	const nameMenu string = "Ogliolio Mie Star"
+	const categoryMenu = "Spaghetti"
 
-	const (
-		firstName = "John"
-		lastName  = "Doe"
-	)
+	// Defining multiple constants
+	// const (
+	// 	firstName = "Cant changed"
+	// 	lastName  = "Cant changed"
+	// )
 
-	fmt.Println("Value of Pi:", pi)
-	fmt.Println("Value of E:", e)
-
-	// Uncommenting the following lines will cause an error
-	// pi = 3.14159 // cannot assign to pi
-	// e = 2.71828 // cannot assign to e
+	fmt.Println("What menu?", nameMenu)
+	fmt.Println("This is the category:", categoryMenu)
 }
