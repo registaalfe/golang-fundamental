@@ -9,5 +9,7 @@ func main() {
 	fmt.Println(slice[0])
 	fmt.Println(slice[1])
 	fmt.Println("Panjang slice:", len(slice))      // 3 → Maret, April, Mei
-	fmt.Println("Kapasitas slice:", cap(slice)) 
+	fmt.Println("Kapasitas slice:", cap(slice))
+
+	
 }
