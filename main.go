@@ -5,5 +5,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("This is main")
+	firstName := "John"
+	lastName := "Doe"
+
+	fmt.Println("Hello '", firstName, lastName, "'")
+	fmt.Printf("Hello '%s %s'", firstName, lastName) // better used Printf than Println for formatted output
 }
