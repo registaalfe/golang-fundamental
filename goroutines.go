@@ -7,7 +7,7 @@ import (
 )
 
 
-var m = sync.Mutex{}
+var m = sync.RWMutex{} // Creating a mutex to protect shared data
 
 // Creating a WaitGroup to wait for all goroutines to finish
 var wg = sync.WaitGroup{}
@@ -32,9 +32,19 @@ func main() {
 func dbCall(index int) {
 	var delay float32 = 2000 // Simulating a delay of up to 2 seconds
 	time.Sleep(time.Duration(delay) * time.Millisecond) // This pauses the program for the random delay
-	fmt.Println("The result from the database is:", dbData[index]) // print call
-	m.Lock()
-	results = append(results, dbData[index]) // Append the result to the results slice
-	m.Unlock() // Unlock the mutex after appending
+	save(dbData[index]) // Call the save function to append the result
+	log() // Call the log function to print the results
 	wg.Done() // Decrement the WaitGroup counter when done
+}
+
+func save(result string) {
+	m.Lock()
+	results = append(results, result) // Append the result to the results slice
+	m.Unlock() // Unlock the mutex after appending
+}
+
+func log() {
+	m.RLock() // Lock for reading
+	fmt.Println("The result from the database is:", results) // print call
+	m.RUnlock() // Lock for reading
 }
